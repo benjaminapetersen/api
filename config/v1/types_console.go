@@ -23,6 +23,7 @@ type Console struct {
 type ConsoleSpec struct {
 	// +optional
 	Authentication ConsoleAuthentication `json:"authentication"`
+	Links          ConsoleLinks          `json:"consoleLinks"`
 }
 
 type ConsoleStatus struct {
@@ -54,4 +55,12 @@ type ConsoleAuthentication struct {
 	// +optional
 	// +kubebuilder:validation:Pattern=^$|^((https):\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/?))$
 	LogoutRedirect string `json:"logoutRedirect,omitempty"`
+}
+
+type ConsoleLinks struct {
+	Text        string `json:"text""`
+	Description string `json:"description"`
+	// TODO: should this just be url?
+	Href string `json:href`
+	Menu string `json:menu`
 }
